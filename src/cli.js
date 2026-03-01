@@ -1,10 +1,12 @@
 import { resolve } from 'node:path';
+import { readFileSync, existsSync } from 'node:fs';
 import { scanner } from './scanner.js';
 import { budgeter } from './budgeter.js';
 import { gemini } from './gemini.js';
 import { writer } from './writer.js';
 
-const VERSION = '1.0.0';
+const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url)));
+const VERSION = pkg.version;
 
 const HELP = `
 rule-gen v${VERSION}
@@ -85,6 +87,11 @@ function parseArgs(argv) {
 export async function main(argv) {
   const opts = parseArgs(argv);
   const projectPath = resolve(opts.path);
+
+  if (!existsSync(projectPath)) {
+    console.error(`Error: Directory not found: ${projectPath}`);
+    process.exit(1);
+  }
 
   if (!opts.apiKey) {
     console.error('Error: No Gemini API key found.');
