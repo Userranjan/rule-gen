@@ -1,12 +1,10 @@
 # rule-gen
 
-[![npm version](https://img.shields.io/npm/v/rulegen-ai)](https://www.npmjs.com/package/rulegen-ai) [![npm downloads](https://img.shields.io/npm/dw/rulegen-ai)](https://www.npmjs.com/package/rulegen-ai) [![license](https://img.shields.io/npm/l/rulegen-ai)](https://github.com/nedcodes-ok/rule-gen/blob/main/LICENSE) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen)](https://github.com/nedcodes-ok/rule-gen/blob/main/CONTRIBUTING.md)
+[![npm version](https://img.shields.io/npm/v/rulegen-ai)](https://www.npmjs.com/package/rulegen-ai) [![npm downloads](https://img.shields.io/npm/dw/rulegen-ai)](https://www.npmjs.com/package/rulegen-ai) [![license](https://img.shields.io/npm/l/rulegen-ai)](https://github.com/nedcodes-ok/rule-gen/blob/main/LICENSE)
 
-Generate AI coding rules from your codebase, powered by Google Gemini.
+**Stop writing Cursor rules by hand.**
 
-Most rule generators read your `package.json` and spit out generic templates. rule-gen feeds your **actual source code** into Gemini's 1M token context window and generates rules based on patterns it finds in *your* codebase.
-
-## Quick Start
+Feed your codebase to Gemini. Get rules based on patterns it finds in *your* code, not generic templates from a package.json scan.
 
 ```bash
 export GEMINI_API_KEY=your-key-here
@@ -15,19 +13,15 @@ npx rulegen-ai
 
 Get a free API key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey).
 
-## What It Does
+## What you get
 
 ```
 $ npx rulegen-ai ./my-express-api
 
 Scanning ./my-express-api...
-  Found 47 files
-  Selected 32 files for analysis
-  Estimated tokens: ~89,200
+  Found 47 files · Selected 32 for analysis · ~89,200 tokens
 
 Generating rules with gemini-2.5-flash-lite...
-  API usage: 91,043 input, 2,180 output tokens
-  Generated 7 rules
 
 Written 7 files:
   ✓ .cursor/rules/zod-validation-before-handlers.mdc
@@ -39,67 +33,52 @@ Written 7 files:
   ✓ .cursor/rules/middleware-ordering.mdc
 ```
 
-These aren't generic rules. They're specific to your project:
+Not "use TypeScript" or "write clean code". Rules like:
 
-- "Import prisma from `../db` — never instantiate PrismaClient directly"
-- "Route files validate with Zod schemas before handlers, return `{ data }` or `{ error }` shapes"
-- "Tests live in `__tests__/` and mirror the `src/` directory structure"
+- *"Import prisma from `../db` — never instantiate PrismaClient directly"*
+- *"Route files validate with Zod schemas before handlers, return `{ data }` or `{ error }` shapes"*
+- *"Tests live in `__tests__/` and mirror the `src/` directory structure"*
 
-## Output Formats
+## Output formats
 
 | Format | Flag | Output |
 |--------|------|--------|
-| **Cursor** | `--format cursor` (default) | `.cursor/rules/*.mdc` |
-| **Claude Code** | `--format claude-md` | `CLAUDE.md` |
-| **Claude Agents** | `--format agents-md` | `AGENTS.md` |
-| **GitHub Copilot** | `--format copilot` | `.github/copilot-instructions.md` |
-| **Windsurf** | `--format windsurf` | `.windsurfrules` |
+| Cursor | `--format cursor` (default) | `.cursor/rules/*.mdc` |
+| Claude Code | `--format claude-md` | `CLAUDE.md` |
+| AGENTS.md | `--format agents-md` | `AGENTS.md` |
+| GitHub Copilot | `--format copilot` | `.github/copilot-instructions.md` |
+| Windsurf | `--format windsurf` | `.windsurfrules` |
 
-## How It Works
+## How it works
 
-1. **Scan** — Walks your project tree, respects `.gitignore`, skips `node_modules`/`dist`/binaries
-2. **Budget** — Prioritizes config files, entry points, routes, and pattern-rich files to fit Gemini's context window
-3. **Generate** — Sends code to Gemini with a prompt engineered to reject generic advice and produce project-specific rules
-4. **Write** — Outputs valid rule files in your chosen format
-
-## Why Gemini
-
-Gemini's 1M token context window lets rule-gen send your entire codebase in a single request. No chunking, no summarization, no lost context. The model sees all your files at once and identifies patterns that span across modules.
+1. **Scans** your project tree (respects `.gitignore`, skips binaries)
+2. **Prioritizes** config files, entry points, routes, and pattern-rich files to fit Gemini's context window
+3. **Sends everything in one request** — Gemini's 1M token context sees your whole codebase at once. No chunking, no lost context.
+4. **Writes** valid rule files in your chosen format
 
 ## Options
 
 ```
---format <format>   Output format: cursor, claude-md, agents-md, copilot, windsurf
+--format <format>   cursor, claude-md, agents-md, copilot, windsurf
 --model <model>     Gemini model (default: gemini-2.5-flash-lite)
---dry-run           Preview rules without writing files
---verbose           Show which files are sent to Gemini
---max-files <n>     Max source files to include (default: 50)
---api-key <key>     Gemini API key (or set GEMINI_API_KEY env var)
--v, --version       Show version
--h, --help          Show help
+--dry-run           Preview without writing files
+--verbose           Show which files are sent
+--max-files <n>     Max source files (default: 50)
+--api-key <key>     Or set GEMINI_API_KEY env var
 ```
 
-## Zero Dependencies
+Zero dependencies. Built with Node.js builtins only.
 
-Built with Node.js built-in modules only (`node:https`, `node:fs`, `node:path`). No SDK, no `node_modules`.
+## Next step: check your rules
 
-## Requirements
-
-- Node.js 18+
-- A [Google Gemini API key](https://aistudio.google.com/apikey) (free tier works)
-
-## Next Step: Validate Your Rules
-
-rule-gen creates rules. **[cursor-doctor](https://github.com/nedcodes-ok/cursor-doctor)** makes sure they work. Run it after generating:
+rule-gen creates rules. **[cursor-doctor](https://github.com/nedcodes-ok/cursor-doctor)** makes sure they actually work.
 
 ```bash
-npx cursor-doctor scan    # Check for issues
+npx cursor-doctor scan    # Health check with letter grade
 npx cursor-doctor lint    # Detailed rule-by-rule linting
 ```
 
-100+ checks for broken globs, vague instructions, conflicts, token waste, and more.
-
-Also: **[rule-porter](https://github.com/nedcodes-ok/rule-porter)** converts rules between Cursor, Claude, Copilot, and Windsurf.
+100+ checks for broken globs, vague instructions, conflicts, and token waste. Also: **[rule-porter](https://github.com/nedcodes-ok/rule-porter)** converts rules between Cursor, Claude, Copilot, and Windsurf.
 
 ## License
 
